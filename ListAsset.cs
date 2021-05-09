@@ -8,9 +8,9 @@ namespace StockQuoteAlert{
         }
         public string Ls(){
             var report = new System.Text.StringBuilder();
-            report.AppendLine("ID\tTICKER\tLOWER LIMIT\t\tUPPER LIMIT");
+            report.AppendLine("ID\tTICKER\tREFERÊNCIA PARA VENDA\tREFERÊNCIA PARA COMPRA");
             foreach(var asset in list_asset){
-                report.AppendLine($"{asset.id}\t{asset.ticker}\t{asset.lower_limit}\t\t{asset.upper_limit}");
+                report.AppendLine($"{asset.id}\t{asset.ticker}\tR$ {asset.sale_reference}\t\tR$ {asset.purchase_reference}");
             }
             return report.ToString();
         }
