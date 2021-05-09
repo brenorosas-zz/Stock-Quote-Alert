@@ -1,0 +1,16 @@
+C:\Users\breno\Broker-Challenge\obj\Debug\net5.0\StockQuoteAlert.csprojAssemblyReference.cache
+C:\Users\breno\Broker-Challenge\obj\Debug\net5.0\StockQuoteAlert.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\breno\Broker-Challenge\obj\Debug\net5.0\StockQuoteAlert.AssemblyInfoInputs.cache
+C:\Users\breno\Broker-Challenge\obj\Debug\net5.0\StockQuoteAlert.AssemblyInfo.cs
+C:\Users\breno\Broker-Challenge\obj\Debug\net5.0\StockQuoteAlert.csproj.CoreCompileInputs.cache
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\StockQuoteAlert.exe
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\StockQuoteAlert.deps.json
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\StockQuoteAlert.runtimeconfig.json
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\StockQuoteAlert.runtimeconfig.dev.json
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\StockQuoteAlert.dll
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\ref\StockQuoteAlert.dll
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\StockQuoteAlert.pdb
+C:\Users\breno\Broker-Challenge\obj\Debug\net5.0\StockQuoteAlert.dll
+C:\Users\breno\Broker-Challenge\obj\Debug\net5.0\ref\StockQuoteAlert.dll
+C:\Users\breno\Broker-Challenge\obj\Debug\net5.0\StockQuoteAlert.pdb
+C:\Users\breno\Broker-Challenge\obj\Debug\net5.0\StockQuoteAlert.genruntimeconfig.cache
