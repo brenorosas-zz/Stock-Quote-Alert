@@ -3,16 +3,16 @@ namespace StockQuoteAlert{
     public class Asset{
         public int id = 0;
         public string ticker {get; set;}
-        public decimal lower_limit {get; set;}
+        public decimal sale_reference {get; set;}
 
-        public decimal upper_limit {get; set;}
+        public decimal purchase_reference {get; set;}
         private static int uniqueId = 0;
 
         public Asset() : this("XXXX", 0, 0) {}
-        public Asset(string ticker, decimal lower_limit, decimal upper_limit){
+        public Asset(string ticker, decimal sale_reference, decimal purchase_reference){
             this.ticker = ticker;
-            this.lower_limit = lower_limit;
-            this.upper_limit = upper_limit;
+            this.sale_reference = sale_reference;
+            this.purchase_reference = purchase_reference;
             this.id = uniqueId;
             uniqueId++;
         }
