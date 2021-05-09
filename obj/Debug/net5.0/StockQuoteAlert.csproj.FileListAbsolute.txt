@@ -14,3 +14,9 @@ C:\Users\breno\Broker-Challenge\obj\Debug\net5.0\StockQuoteAlert.dll
 C:\Users\breno\Broker-Challenge\obj\Debug\net5.0\ref\StockQuoteAlert.dll
 C:\Users\breno\Broker-Challenge\obj\Debug\net5.0\StockQuoteAlert.pdb
 C:\Users\breno\Broker-Challenge\obj\Debug\net5.0\StockQuoteAlert.genruntimeconfig.cache
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\CsvHelper.dll
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\Flurl.dll
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\Flurl.Http.dll
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\YahooFinanceApi.dll
+C:\Users\breno\Broker-Challenge\obj\Debug\net5.0\StockQuoteAlert.csproj.CopyComplete
