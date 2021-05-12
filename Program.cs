@@ -2,27 +2,35 @@
 using System.Threading;
 using System.Threading.Tasks;
 using YahooFinanceApi;
+using System.Collections.Generic;
+using System.Net.Mail;
 namespace StockQuoteAlert
 {
     class Program
     {
         private static async Task Monitor(ListAsset list){
-            EmailController EmailSender = new EmailController();
             while(true){
-                foreach (var asset in list.list_asset){
-                    var securities = await Yahoo.Symbols(asset.ticker+".SA").QueryAsync();
-                    var ticker = securities[asset.ticker+".SA"];
+                var emails = new List<Task>();
+                foreach (var asset in list.AssetList){
+                    EmailService emailSender = new EmailService();
+                    var securities = await Yahoo.Symbols(asset.Ticker+".SA").QueryAsync();
+                    var ticker = securities[asset.Ticker+".SA"];
                     var price = System.Convert.ToDecimal(ticker[Field.RegularMarketPrice]);
-                    if(price > asset.sale_reference){
+                    if(price > asset.SaleReference){
                         //Funcionando, comentado para evitar spam e lembrar de tratar warning.
-                        // Task.Run(() => EmailSender.SendMail("brenorosas@hotmail.com", "ALERTA DE VENDA", $"O ativo {asset.ticker} subiu acima do nível de referencia para venda de R${asset.sale_reference}, e está custando R${price}"));
+                        // Console.WriteLine("Enviando saporra");
+                        emails.Add(emailSender.SendMail("brenorosas@hotmail.com", "ALERTA DE VENDA", $"O ativo {asset.Ticker} subiu acima do nível de referencia para venda de R${asset.SaleReference}, e está custando R${price}"));
                     }
-                    if(price < asset.purchase_reference){
+                    if(price < asset.PurchaseReference){
                         //Funcionando, comentado para evitar spam e lembrar de tratar warning.
-                        // Task.Run(() => EmailSender.SendMail("brenorosas@hotmail.com", "ALERTA DE VENDA", $"O ativo {asset.ticker} caiu abaixo do nível de referencia para venda de R${asset.purchase_reference}, e está custando R${price}"));
+                        // Console.WriteLine("Enviando a outra porra");
+                        emails.Add(emailSender.SendMail("brenorosas@hotmail.com", "ALERTA DE VENDA", $"O ativo {asset.Ticker} caiu abaixo do nível de referencia para venda de R${asset.PurchaseReference}, e está custando R${price}"));
                     }
                 }
-                Thread.Sleep(1000);
+                // Console.WriteLine("Aguaradndo essa porra");
+                await Task.WhenAll(emails);
+                // Console.WriteLine("Aguardei esssa porra");
+                await Task.Delay(1000);
             }
         }
         static void Main(string[] args)

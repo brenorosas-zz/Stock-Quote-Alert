@@ -1,11 +1,13 @@
 using System;
-using System.Net;
 using System.Net.Mail;
+using System.Net;
+using System.Threading;
+using System.Threading.Tasks;
 namespace StockQuoteAlert{
-    public class EmailController{
-        public SmtpClient client {get; set;}
-        public EmailController(){
-            this.client = new SmtpClient()
+    public class EmailService{
+        private readonly SmtpClient _smtpClient;
+        public EmailService(){
+            _smtpClient = new SmtpClient()
             {
                 Host = "smtp.gmail.com",
                 Port = 587,
@@ -15,9 +17,9 @@ namespace StockQuoteAlert{
                 Credentials = new NetworkCredential("brenodjangoemail@gmail.com", "Breno1999"),
             };
         }
-        public void SendMail(string toEmailAddress, string emailSubject, string emailMessage){
+        public async Task SendMail(string toEmailAddress, string emailSubject, string emailMessage){
             try{
-                this.client.Send("brenodjangoemail@gmail.com", toEmailAddress, emailSubject, emailMessage);
+                await _smtpClient.SendMailAsync("brenodjangoemail@gmail.com", toEmailAddress, emailSubject, emailMessage);
             }
             catch(Exception ex){
                 Console.WriteLine($"Exception caught in CreateTestMessage(): {ex.ToString()}");
