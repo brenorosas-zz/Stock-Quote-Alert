@@ -4,7 +4,7 @@ namespace StockQuoteAlert{
     public class ListAsset{
         public List<Asset> AssetList {get; set;}
         public ListAsset(){
-            this.AssetList = new List<Asset> ();
+            AssetList = new List<Asset> ();
         }
         public string Ls(){
             var report = new System.Text.StringBuilder();
@@ -15,20 +15,20 @@ namespace StockQuoteAlert{
             return report.ToString();
         }
         public void Add(Asset asset){
-            this.AssetList.Add(asset);
+            AssetList.Add(asset);
         }
         public void Remove(int id){
             int index = 0;
             bool exist = false;
-            for(int i = 0; i < this.AssetList.Count; i++){
-                if(this.AssetList[i].Id == id){
+            for(int i = 0; i < AssetList.Count; i++){
+                if(AssetList[i].Id == id){
                     index = i;
                     exist = true;
                     break;
                 }
             }
             if(exist)
-                this.AssetList.RemoveAt(index);
+                AssetList.RemoveAt(index);
         }
     }
 }

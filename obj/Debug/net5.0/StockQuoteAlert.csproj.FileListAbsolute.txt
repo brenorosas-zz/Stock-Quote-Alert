@@ -20,3 +20,17 @@ C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\Flurl.Http.dll
 C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\YahooFinanceApi.dll
 C:\Users\breno\Broker-Challenge\obj\Debug\net5.0\StockQuoteAlert.csproj.CopyComplete
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\System.CommandLine.dll
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\cs\System.CommandLine.resources.dll
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\de\System.CommandLine.resources.dll
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\es\System.CommandLine.resources.dll
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\fr\System.CommandLine.resources.dll
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\it\System.CommandLine.resources.dll
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\ja\System.CommandLine.resources.dll
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\ko\System.CommandLine.resources.dll
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\pl\System.CommandLine.resources.dll
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\pt-BR\System.CommandLine.resources.dll
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\ru\System.CommandLine.resources.dll
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\tr\System.CommandLine.resources.dll
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\zh-Hans\System.CommandLine.resources.dll
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\zh-Hant\System.CommandLine.resources.dll

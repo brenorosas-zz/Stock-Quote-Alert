@@ -22,7 +22,7 @@ namespace StockQuoteAlert{
                 await _smtpClient.SendMailAsync("brenodjangoemail@gmail.com", toEmailAddress, emailSubject, emailMessage);
             }
             catch(Exception ex){
-                Console.WriteLine($"Exception caught in CreateTestMessage(): {ex.ToString()}");
+                Console.WriteLine($"Erro ao enviar email: {ex.ToString()}");
             }
         }
     }
