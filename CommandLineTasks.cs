@@ -6,20 +6,12 @@ using YahooFinanceApi;
 namespace StockQuoteAlert{
     public class CommandLineTasks{
         public CommandLineTasks(){}
-        public async Task Add(List<Asset> assetList, string[] args){
+        public void Add(List<Asset> assetList, string[] args){
             if(args.Length < 3){
                 Console.WriteLine("Informações incompletas");
                 return;
             }
             string ticker = args[1];
-            var securities = await Yahoo.Symbols(ticker+".SA").QueryAsync();
-            try{
-                var x = securities[ticker+".SA"];
-            }
-            catch{
-                Console.WriteLine($"Ativo {ticker} não encontrado.");
-                return;
-            }
             // var price = System.Convert.ToDecimal(breno[Field.RegularMarketPrice]);
             // Console.WriteLine(price);
             decimal SaleReference = 0, PurchaseReference = 0;
@@ -47,7 +39,7 @@ namespace StockQuoteAlert{
             }
             int id = -1;
             try{
-                id = Convert.ToInt32(args[2]);
+                id = Convert.ToInt32(args[1]);
             }
             catch{
                 Console.WriteLine("Id no formato incorreto, favor digitar um número inteiro.");

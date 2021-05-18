@@ -10,11 +10,21 @@ namespace StockQuoteAlert
     class Program
     {
         private static async Task Monitor(List<Asset> assetList){
+            var tasks = new CommandLineTasks();
             while(true){
                 var emails = new List<Task>();
+                List<int> removeList = new List<int>();
                 foreach (var asset in assetList){
                     EmailService emailSender = new EmailService();
                     var securities = await Yahoo.Symbols(asset.Ticker+".SA").QueryAsync();
+                    try{
+                        var x = securities[asset.Ticker+".SA"];
+                    }
+                    catch{
+                        Console.WriteLine($"Ativo {asset.Ticker} não encontrado.");
+                        removeList.Add(asset.Id);
+                        continue;
+                    }
                     var ticker = securities[asset.Ticker+".SA"];
                     var price = System.Convert.ToDecimal(ticker[Field.RegularMarketPrice]);
                     if(price > asset.SaleReference && asset.State != Asset.States.Sale){
@@ -34,9 +44,12 @@ namespace StockQuoteAlert
                         await Task.WhenAll(emails);
                     }
                 }
-                // Console.WriteLine("Aguaradndo essa porra");
+                foreach(int idToRemove in removeList){
+                    string id = Convert.ToString(idToRemove);
+                    string[] aux = {"rm", id};
+                    tasks.Remove(assetList, aux);
+                }
                 await Task.WhenAll(emails);
-                // Console.WriteLine("Aguardei esssa porra");
                 await Task.Delay(1000);
             }
         }
@@ -68,7 +81,7 @@ namespace StockQuoteAlert
             var workers = new List<Task>();
             for(int i = 0; i + 2 < args.Length; i+=3){
                 string[] aux = {"add", args[i], args[i+1], args[i+2]};
-                await tasks.Add(assetList, aux);
+                tasks.Add(assetList, aux);
             }
             workers.Add(Monitor(assetList));
             workers.Add(Worker(tasks, assetList));

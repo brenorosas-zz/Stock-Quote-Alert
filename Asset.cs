@@ -1,6 +1,5 @@
 using System;
 namespace StockQuoteAlert{
-    enum States{Sale, Purchase, Normal};
     public class Asset{
         public int Id = 0;
         public string Ticker {get; set;}
