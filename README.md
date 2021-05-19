@@ -1,17 +1,10 @@
 # Stock Quote Alert
-> Descrição curta sobre o que seu projeto faz.
-
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
 
 Esse projeto foi feito como parte do processo seletivo de estágio na Inoa Sitemas.
 
 O objetivo desse sistema é auxiliar um investidor nas suas decisões de comprar/vender ativos da B3, monitorando continuamente e avisar, via e-mail, caso a cotação de um caia mais do que um certo nível, ou suba acima de outro.
 
 O programa é uma aplicação de console.
-
-![](/images/header.png)
 
 ## Instalação
 
@@ -52,7 +45,7 @@ ls
 ```
 Caso tenha seguido os comandos iguais os vistos até agora, verá no console essas informações:
 
-![](/images/header.png)
+![](/images/list.png)
 
 rm - Remove um ativo do monitoramento tomando como referência o Id.
 
