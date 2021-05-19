@@ -28,11 +28,11 @@ namespace StockQuoteAlert
                     var price = System.Convert.ToDecimal(ticker[Field.RegularMarketPrice]);
                     if(price > asset.SaleReference && asset.State != Asset.States.Sale){
                         asset.State = Asset.States.Sale;
-                        emails.Add(emailSender.SendMail("brenorosas@hotmail.com", "ALERTA DE VENDA", $"O ativo {asset.Ticker} subiu acima do nível de referencia para venda de R${asset.SaleReference}, e está custando R${price}"));
+                        emails.Add(emailSender.SendMail(Environment.GetEnvironmentVariable("DESTINATION_EMAIL"), "ALERTA DE VENDA", $"O ativo {asset.Ticker} subiu acima do nível de referencia para venda de R${asset.SaleReference}, e está custando R${price}"));
                     }
                     else if(price < asset.PurchaseReference && asset.State != Asset.States.Purchase){
                         asset.State = Asset.States.Purchase;
-                        emails.Add(emailSender.SendMail("brenorosas@hotmail.com", "ALERTA DE VENDA", $"O ativo {asset.Ticker} caiu abaixo do nível de referencia para venda de R${asset.PurchaseReference}, e está custando R${price}"));
+                        emails.Add(emailSender.SendMail(Environment.GetEnvironmentVariable("DESTINATION_EMAIL"), "ALERTA DE VENDA", $"O ativo {asset.Ticker} caiu abaixo do nível de referencia para venda de R${asset.PurchaseReference}, e está custando R${price}"));
                     }
                     else if(price >= asset.PurchaseReference && price <= asset.SaleReference){
                         asset.State = Asset.States.Normal;
@@ -73,6 +73,7 @@ namespace StockQuoteAlert
         }
         static async Task Main(string[] args)
         {
+            DotNetEnv.Env.Load(".env");
             var tasks = new CommandLineTasks();
             var assetList = new List<Asset>();
             var workers = new List<Task>();

@@ -8,17 +8,17 @@ namespace StockQuoteAlert{
         public EmailService(){
             _smtpClient = new SmtpClient()
             {
-                Host = "smtp.gmail.com",
-                Port = 587,
+                Host = Environment.GetEnvironmentVariable("SMTP_HOST"),
+                Port = Convert.ToInt16(Environment.GetEnvironmentVariable("SMTP_PORT")),
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
-                Credentials = new NetworkCredential("brenodjangoemail@gmail.com", "Breno1999"),
+                Credentials = new NetworkCredential(Environment.GetEnvironmentVariable("EMAIL_ADDRESS"), Environment.GetEnvironmentVariable("EMAIL_PASSWORD")),
             };
         }
         public async Task SendMail(string toEmailAddress, string emailSubject, string emailMessage){
             try{
-                await _smtpClient.SendMailAsync("brenodjangoemail@gmail.com", toEmailAddress, emailSubject, emailMessage);
+                await _smtpClient.SendMailAsync(Environment.GetEnvironmentVariable("EMAIL_ADDRESS"), toEmailAddress, emailSubject, emailMessage);
             }
             catch(Exception ex){
                 Console.WriteLine($"Erro ao enviar email: {ex.ToString()}");
