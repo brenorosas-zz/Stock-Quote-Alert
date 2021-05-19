@@ -1,5 +1,4 @@
 using Xunit;
-using System;
 using System.Collections.Generic;
 
 namespace StockQuoteAlert.Tests{
@@ -14,6 +13,9 @@ namespace StockQuoteAlert.Tests{
             command.Add(assetListTest, args);
             Assert.Equal(assetList, assetListTest);
             args = new string[] {"add", "PETR4", "testError", "22.50"};
+            command.Add(assetListTest, args);
+            Assert.Equal(assetList, assetListTest);
+            args = new string[] {"add", "PETR4", "22.59", "22.67"};
             command.Add(assetListTest, args);
             Assert.Equal(assetList, assetListTest);
             args = new string[] {"add", "PETR4", "22.67", "22.59"};
@@ -53,10 +55,10 @@ namespace StockQuoteAlert.Tests{
             string actual = command.List(assetList);
             string expected = report.ToString();
             Assert.Equal(actual, expected);
-            var asset = new Asset("PETR4", (decimal)22.67, (decimal)22.59);
-            assetList.Add(asset);
-            foreach(var x in assetList){
-                report.AppendLine($"{x.Id}\t{x.Ticker}\tR$ {x.SaleReference}\t\tR$ {x.PurchaseReference}\t\t\t{x.State}");
+            var assetTest = new Asset("PETR4", (decimal)22.67, (decimal)22.59);
+            assetList.Add(assetTest);
+            foreach(var asset in assetList){
+                report.AppendLine($"{asset.Id}\t{asset.Ticker}\tR$ {asset.SaleReference}\t\tR$ {asset.PurchaseReference}\t\t\t{asset.State}");
             }
             expected = report.ToString();
             actual = command.List(assetList);

@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Threading.Tasks;
-using YahooFinanceApi;
 namespace StockQuoteAlert{
     public class CommandLineTasks{
         public CommandLineTasks(){}
@@ -27,6 +25,10 @@ namespace StockQuoteAlert{
             }
             catch{
                 Console.WriteLine("Digite o preço de referência para compra no formato: 22.59");
+                return;
+            }
+            if(SaleReference < PurchaseReference){
+                Console.WriteLine("O valor referênica para venda deve ser maior que o de compra");
                 return;
             }
             Asset asset = new Asset(ticker, SaleReference, PurchaseReference, Asset.States.Normal);

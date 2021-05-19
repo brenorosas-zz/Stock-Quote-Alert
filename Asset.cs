@@ -1,4 +1,3 @@
-using System;
 namespace StockQuoteAlert{
     public class Asset{
         public int Id = 0;

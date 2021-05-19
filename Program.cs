@@ -4,7 +4,6 @@ using YahooFinanceApi;
 using System.Collections.Generic;
 using System.CommandLine;
 using System.CommandLine.Invocation;
-using System.IO;
 namespace StockQuoteAlert
 {
     class Program
@@ -29,12 +28,10 @@ namespace StockQuoteAlert
                     var price = System.Convert.ToDecimal(ticker[Field.RegularMarketPrice]);
                     if(price > asset.SaleReference && asset.State != Asset.States.Sale){
                         asset.State = Asset.States.Sale;
-                        //Funcionando, comentado para evitar spam e lembrar de tratar warning.
                         emails.Add(emailSender.SendMail("brenorosas@hotmail.com", "ALERTA DE VENDA", $"O ativo {asset.Ticker} subiu acima do nível de referencia para venda de R${asset.SaleReference}, e está custando R${price}"));
                     }
                     else if(price < asset.PurchaseReference && asset.State != Asset.States.Purchase){
                         asset.State = Asset.States.Purchase;
-                        //Funcionando, comentado para evitar spam e lembrar de tratar warning.
                         emails.Add(emailSender.SendMail("brenorosas@hotmail.com", "ALERTA DE VENDA", $"O ativo {asset.Ticker} caiu abaixo do nível de referencia para venda de R${asset.PurchaseReference}, e está custando R${price}"));
                     }
                     else if(price >= asset.PurchaseReference && price <= asset.SaleReference){

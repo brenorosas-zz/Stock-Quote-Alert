@@ -1,7 +1,6 @@
 using System;
 using System.Net.Mail;
 using System.Net;
-using System.Threading;
 using System.Threading.Tasks;
 namespace StockQuoteAlert{
     public class EmailService{
