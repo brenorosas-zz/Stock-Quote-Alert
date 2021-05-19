@@ -40,7 +40,7 @@ Faça o download do .NET SDK 5.0 clicando no link:
 
 [Download .NET SDK 5.0](https://dotnet.microsoft.com/download/dotnet/thank-you/sdk-5.0.203-windows-x64-installer).
 
-O download deve iniciar automáticamente, em seguida siga os passos de instalação no próprio site de download.
+O download deve iniciar automaticamente, em seguida siga os passos de instalação no próprio site de download.
 
 ## Arquivo de configuração
 
@@ -79,7 +79,7 @@ add - Adiciona um ativo ao monitoramento
 ```sh
 add ABEV3 17.78 17.30
 ```
-ls - Lista os ativos em monitoramento mostrando seu Id, Ticker, referência de venda e referência compra.
+ls - Lista os ativos em monitoramento mostrando seu Id, Ticker, referência para venda, referência para compra e o estado.
 
 ```sh
 ls
