@@ -8,17 +8,55 @@ O programa é uma aplicação de console.
 
 ## Instalação
 
-OS X & Linux:
+Clone esse repositório para seu desktop.
+
+Linux:
+
+No terminal execute os seguintes comandos:
 
 ```sh
-npm install my-crazy-module --save
+wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
+
+sudo dpkg -i packages-microsoft-prod.deb  
+```
+
+Atualize os produtos disponíveis:
+
+```sh
+sudo add-apt-repository universe  
+sudo apt-get install apt-transport-https  
+sudo apt-get update  
+```
+
+Instale utilizando o seguinte comando:
+
+```sh
+sudo apt-get install dotnet
 ```
 
 Windows:
 
+Instalar o .NET SDK 5.0
+
+[Download .NET SDK 5.0](https://dotnet.microsoft.com/download/dotnet/thank-you/sdk-5.0.203-windows-x64-installer).
+
+O download deve iniciar automáticamente, em seguida siga os passos de instalação no próprio site de download.
+
+## Arquivo de configuração
+
+Use o arquivo .env.example para criar um novo .env com as informações:
+
 ```sh
-edit autoexec.bat
+EMAIL_ADDRESS="Email para envio dos alertas"
+EMAIL_PASSWORD="Senha do email EMAIL_ADDRESS"
+DESTINATION_EMAIL="Email destino dos alertas"
+SMTP_HOST="Host do SMTP Client"
+SMTP_PORT="Port do SMTP CLient"
 ```
+
+Se seu gmail tiver identificação por dois fatores, use um [app password](https://support.google.com/accounts/answer/185833).
+
+Possivelmente será preciso alterar as permissões no seu gmail para permitir acesso de aplicativos com menor segurança.
 
 ## Exemplo de uso
 
@@ -27,8 +65,11 @@ Executando o programa. O mesmo pode ser executado com ativos iniciais para monit
 Sendo os parâmetros: Ticker ReferênciaVenda ReferênciaCompra
 
 Exemplo:
+
+No diretório Stock-Quote-Alert.
+
 ```sh
-./stock-quote-alert.exe PETR4 22.67 22.59 B3SA3 17.50 17.05
+dotnet run PETR4 22.67 22.59 B3SA3 17.50 17.05
 ```
 
 Durante a execução temos 3 comandos que podemos executar:
