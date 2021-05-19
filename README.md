@@ -36,7 +36,7 @@ sudo apt-get install dotnet
 
 Windows:
 
-Instalar o .NET SDK 5.0
+Faça o download do .NET SDK 5.0 clicando no link:
 
 [Download .NET SDK 5.0](https://dotnet.microsoft.com/download/dotnet/thank-you/sdk-5.0.203-windows-x64-installer).
 
@@ -44,7 +44,7 @@ O download deve iniciar automáticamente, em seguida siga os passos de instalaç
 
 ## Arquivo de configuração
 
-Use o arquivo .env.example para criar um novo .env com as informações:
+Use o .env.example para criar um novo arquivo .env com as informações:
 
 ```sh
 EMAIL_ADDRESS="Email para envio dos alertas"
@@ -54,7 +54,7 @@ SMTP_HOST="Host do SMTP Client"
 SMTP_PORT="Port do SMTP CLient"
 ```
 
-Se seu gmail tiver identificação por dois fatores, use um [app password](https://support.google.com/accounts/answer/185833).
+Se seu email tiver identificação por dois fatores, use um [app password](https://support.google.com/accounts/answer/185833).
 
 Possivelmente será preciso alterar as permissões no seu gmail para permitir acesso de aplicativos com menor segurança.
 
