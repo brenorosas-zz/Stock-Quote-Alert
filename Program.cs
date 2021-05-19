@@ -66,7 +66,7 @@ namespace StockQuoteAlert
                 commandRemove.Description = "Remove um ativo tomando como referência o ID. rm <id>";
                 commandList.Description = "Lista os ativos em monitoramento";
                 commandAdd.Handler = CommandHandler.Create(() => tasks.Add(assetList, commands));
-                commandList.Handler = CommandHandler.Create(() => tasks.List(assetList));
+                commandList.Handler = CommandHandler.Create(() => Console.WriteLine(tasks.List(assetList)));
                 commandRemove.Handler = CommandHandler.Create(() => tasks.Remove(assetList, commands));
                 rootCommand.Add(commandAdd);
                 rootCommand.Add(commandList);

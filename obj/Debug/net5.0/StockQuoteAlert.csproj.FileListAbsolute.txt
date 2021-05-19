@@ -1,7 +1,5 @@
 C:\Users\breno\Broker-Challenge\obj\Debug\net5.0\StockQuoteAlert.csprojAssemblyReference.cache
 C:\Users\breno\Broker-Challenge\obj\Debug\net5.0\StockQuoteAlert.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\breno\Broker-Challenge\obj\Debug\net5.0\StockQuoteAlert.AssemblyInfoInputs.cache
-C:\Users\breno\Broker-Challenge\obj\Debug\net5.0\StockQuoteAlert.AssemblyInfo.cs
 C:\Users\breno\Broker-Challenge\obj\Debug\net5.0\StockQuoteAlert.csproj.CoreCompileInputs.cache
 C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\StockQuoteAlert.exe
 C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\StockQuoteAlert.deps.json
@@ -34,3 +32,7 @@ C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\ru\System.CommandLine.resources
 C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\tr\System.CommandLine.resources.dll
 C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\zh-Hans\System.CommandLine.resources.dll
 C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\zh-Hant\System.CommandLine.resources.dll
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\xunit.abstractions.dll
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\xunit.assert.dll
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\xunit.core.dll
+C:\Users\breno\Broker-Challenge\bin\Debug\net5.0\xunit.execution.dotnet.dll

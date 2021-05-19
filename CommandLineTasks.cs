@@ -57,13 +57,13 @@ namespace StockQuoteAlert{
                 assetList.RemoveAt(index);
             }
         }
-        public void List(List<Asset> assetList){
+        public string List(List<Asset> assetList){
             var report = new System.Text.StringBuilder();
             report.AppendLine("ID\tTICKER\tREFERÊNCIA PARA VENDA\tREFERÊNCIA PARA COMPRA\t\tESTADO");
             foreach(var asset in assetList){
                 report.AppendLine($"{asset.Id}\t{asset.Ticker}\tR$ {asset.SaleReference}\t\tR$ {asset.PurchaseReference}\t\t\t{asset.State}");
             }
-            Console.WriteLine(report.ToString());
+            return report.ToString();
         }
     }
 }

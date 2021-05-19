@@ -8,6 +8,7 @@ namespace StockQuoteAlert{
         private static int _uniqueId = 0;
         public enum States{Sale, Purchase, Normal};
         public States State{get; set;}
+        public Asset(string ticker, decimal saleReference, decimal purchaseReference) : this(ticker, saleReference, purchaseReference, States.Normal) {}
         public Asset(string ticker, decimal saleReference, decimal purchaseReference, States state){
             Ticker = ticker;
             SaleReference = saleReference;
