@@ -1,1 +1,5 @@
 .env
+./bin
+./obj/Debug
+/unit-testing-using-dotnet-test/StockQuoteAlert.Tests/bin
+/unit-testing-using-dotnet-test/StockQuoteAlert.Tests/obj/Debug
