@@ -16,13 +16,13 @@ namespace StockQuoteAlert.Tests
             args = new string[] { "add", "PETR4", "22.67", "testError" };
             var error = command.Add(assetListTest, args);
             error.Should().Be("Digite o preço de referência para compra no formato: 22.59");
-            args = new string[] { "add", "PETR4", "testError", "22.50"};
+            args = new string[] { "add", "PETR4", "testError", "22.50" };
             error = command.Add(assetListTest, args);
             error.Should().Be("Digite o preço de referência para venda no formato: 22.67");
             args = new string[] { "add", "PETR4", "22.59", "22.67" };
             error = command.Add(assetListTest, args);
             error.Should().Be("O valor referênica para venda deve ser maior que o de compra");
-            args = new string[] { "add", "PETR4", "22.67", "22.59"};
+            args = new string[] { "add", "PETR4", "22.67", "22.59" };
             error = command.Add(assetListTest, args);
             error.Should().Be("ok");
             var asset = new Asset
@@ -38,7 +38,7 @@ namespace StockQuoteAlert.Tests
             assetListTest[0].SaleReference.Should().Be(assetListTest[0].SaleReference);
             assetListTest[0].PurchaseReference.Should().Be(assetListTest[0].PurchaseReference);
             assetListTest[0].State.Should().BeEquivalentTo(assetListTest[0].State);
-            args = new string[] { "add", "PETR4", "22.67"};
+            args = new string[] { "add", "PETR4", "22.67" };
             error = command.Add(assetListTest, args);
             error.Should().Be("Informações incompletas");
         }
@@ -66,7 +66,7 @@ namespace StockQuoteAlert.Tests
             args = new string[] { "rm", $"{asset.Id}" };
             command.Remove(assetListTest, args);
             assetListTest.Should().BeEquivalentTo(assetList);
-            args = new string[] { "rm"};
+            args = new string[] { "rm" };
             error = command.Remove(assetListTest, args);
             error.Should().Be("Informações incompletas");
         }

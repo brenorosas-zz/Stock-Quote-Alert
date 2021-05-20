@@ -12,35 +12,17 @@ Clone esse repositório para seu desktop.
 
 Linux:
 
-No terminal execute os seguintes comandos:
+Siga o tutorial de instalação referente a sua distribuição no site:
 
-```sh
-wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
-
-sudo dpkg -i packages-microsoft-prod.deb  
-```
-
-Atualize os produtos disponíveis:
-
-```sh
-sudo add-apt-repository universe  
-sudo apt-get install apt-transport-https  
-sudo apt-get update  
-```
-
-Instale utilizando o seguinte comando:
-
-```sh
-sudo apt-get install dotnet
-```
+[Download .NET SDK 5.0 Linux](https://docs.microsoft.com/pt-br/dotnet/core/install/linux).
 
 Windows:
 
 Faça o download do .NET SDK 5.0 clicando no link:
 
-[Download .NET SDK 5.0](https://dotnet.microsoft.com/download/dotnet/thank-you/sdk-5.0.203-windows-x64-installer).
+[Download .NET SDK 5.0 Windows](https://dotnet.microsoft.com/download).
 
-O download deve iniciar automaticamente, em seguida siga os passos de instalação no próprio site de download.
+Siga os passos de instalação no próprio site de download.
 
 ## Arquivo de configuração
 
