@@ -2,13 +2,10 @@ using Xunit;
 using System.Collections.Generic;
 using StockQuoteAlert.App;
 using FluentAssertions;
-namespace StockQuoteAlert.Tests
-{
-    public class CommandLineTests
-    {
+namespace StockQuoteAlert.Tests {
+    public class CommandLineTests {
         [Fact]
-        public void TestAdd()
-        {
+        public void TestAdd() {
             var command = new CommandLineTasks();
             var assetList = new List<Asset>();
             var assetListTest = new List<Asset>();
@@ -25,8 +22,7 @@ namespace StockQuoteAlert.Tests
             args = new string[] { "add", "PETR4", "22.67", "22.59" };
             error = command.Add(assetListTest, args);
             error.Should().Be("ok");
-            var asset = new Asset
-            {
+            var asset = new Asset {
                 Ticker = "PETR4",
                 SaleReference = (decimal)22.67,
                 PurchaseReference = (decimal)22.59,
@@ -43,14 +39,12 @@ namespace StockQuoteAlert.Tests
             error.Should().Be("Informações incompletas");
         }
         [Fact]
-        public void TestRemove()
-        {
+        public void TestRemove() {
             string[] args;
             var command = new CommandLineTasks();
             var assetList = new List<Asset>();
             var assetListTest = new List<Asset>();
-            var asset = new Asset
-            {
+            var asset = new Asset {
                 Ticker = "PETR4",
                 SaleReference = (decimal)22.67,
                 PurchaseReference = (decimal)22.59,
@@ -71,8 +65,7 @@ namespace StockQuoteAlert.Tests
             error.Should().Be("Informações incompletas");
         }
         [Fact]
-        public void TestList()
-        {
+        public void TestList() {
             var command = new CommandLineTasks();
             var assetList = new List<Asset>();
             var report = new System.Text.StringBuilder();
@@ -80,16 +73,14 @@ namespace StockQuoteAlert.Tests
             var actual = command.List(assetList);
             var expected = report.ToString();
             actual.Should().BeEquivalentTo(expected);
-            var assetTest = new Asset
-            {
+            var assetTest = new Asset {
                 Ticker = "PETR4",
                 SaleReference = (decimal)22.67,
                 PurchaseReference = (decimal)22.59,
                 State = Asset.States.Normal
             };
             assetList.Add(assetTest);
-            foreach (var asset in assetList)
-            {
+            foreach (var asset in assetList) {
                 report.AppendLine($"{asset.Id}\t{asset.Ticker}\tR$ {asset.SaleReference}\t\tR$ {asset.PurchaseReference}\t\t\t{asset.State}");
             }
             expected = report.ToString();

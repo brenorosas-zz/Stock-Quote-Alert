@@ -61,11 +61,13 @@ add - Adiciona um ativo ao monitoramento
 ```sh
 add ABEV3 17.78 17.30
 ```
+
 ls - Lista os ativos em monitoramento mostrando seu Id, Ticker, referência para venda, referência para compra e o estado.
 
 ```sh
 ls
 ```
+
 Caso tenha seguido os comandos iguais os vistos até agora, verá no console essas informações:
 
 ![](/images/list.png)
