@@ -1,54 +1,23 @@
 ﻿using System;
 using System.Threading.Tasks;
-using YahooFinanceApi;
 using System.Collections.Generic;
 using System.CommandLine;
 using System.CommandLine.Invocation;
 namespace StockQuoteAlert.App {
     class Program {
-        public static async Task Monitor(CommandLineTasks tasks, List<Asset> assetList, YahooIntegration yahooIntegration) {
-            var emails = new List<Task>();
-            var removeList = new List<int>();
-            foreach (var asset in assetList) {
-                var emailService = new EmailService();
-                var securities = await yahooIntegration.YahooSymbol(asset.Ticker);
-                try {
-                    var x = securities[asset.Ticker + ".SA"];
-                }
-                catch {
-                    Console.WriteLine($"Ativo {asset.Ticker} não encontrado.");
-                    removeList.Add(asset.Id);
-                    continue;
-                }
-                var ticker = securities[asset.Ticker + ".SA"];
-                var price = System.Convert.ToDecimal(ticker[Field.RegularMarketPrice]);
-                if (price > asset.SaleReference && asset.State != Asset.States.Sale) {
-                    asset.State = Asset.States.Sale;
-                    emails.Add(emailService.SendMail(Environment.GetEnvironmentVariable("DESTINATION_EMAIL"), "ALERTA DE VENDA", $"O ativo {asset.Ticker} subiu acima do nível de referencia para venda de R${asset.SaleReference}, e está custando R${price}"));
-                }
-                else if (price < asset.PurchaseReference && asset.State != Asset.States.Purchase) {
-                    asset.State = Asset.States.Purchase;
-                    emails.Add(emailService.SendMail(Environment.GetEnvironmentVariable("DESTINATION_EMAIL"), "ALERTA DE VENDA", $"O ativo {asset.Ticker} caiu abaixo do nível de referencia para venda de R${asset.PurchaseReference}, e está custando R${price}"));
-                }
-                else if (price >= asset.PurchaseReference && price <= asset.SaleReference) {
-                    asset.State = Asset.States.Normal;
-                }
-                if (emails.Count >= 5) {
-                    await Task.WhenAll(emails);
-                }
-            }
-            foreach (int idToRemove in removeList) {
-                var id = Convert.ToString(idToRemove);
-                string[] aux = { "rm", id };
-                tasks.Remove(assetList, aux);
-            }
-            await Task.WhenAll(emails);
-        }
         private static async Task StartMonitor(List<Asset> assetList) {
             var tasks = new CommandLineTasks();
             var yahooIntegration = new YahooIntegration();
+            string host = Environment.GetEnvironmentVariable("SMTP_HOST");
+            int port = int.Parse(Environment.GetEnvironmentVariable("SMTP_PORT"));
+            string emailAddress = Environment.GetEnvironmentVariable("EMAIL_ADDRESS");
+            string emailPassword = Environment.GetEnvironmentVariable("EMAIL_PASSWORD");
+            string destinationEmail = Environment.GetEnvironmentVariable("DESTINATION_EMAIL");
+            int maxConcurrentEmails = int.Parse(Environment.GetEnvironmentVariable("MAX_CONCURRENT_EMAILS"));
+            var emailService = new EmailService(host, port, emailAddress, emailPassword);
+            var monitor = new Monitor();
             while (true) {
-                await Monitor(tasks, assetList, yahooIntegration);
+                await monitor.ToMonitor(tasks, assetList, yahooIntegration, emailService, destinationEmail, maxConcurrentEmails);
                 await Task.Delay(1000);
             }
         }

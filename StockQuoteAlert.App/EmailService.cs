@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 namespace StockQuoteAlert.App {
     public class EmailService {
         private readonly SmtpClient _smtpClient;
-        public EmailService() {
+        public EmailService(string host, int port, string emailAddress, string emailPassword) {
             _smtpClient = new SmtpClient() {
-                Host = Environment.GetEnvironmentVariable("SMTP_HOST"),
-                Port = Convert.ToInt16(Environment.GetEnvironmentVariable("SMTP_PORT")),
+                Host = host,
+                Port = port,
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(Environment.GetEnvironmentVariable("EMAIL_ADDRESS"), Environment.GetEnvironmentVariable("EMAIL_PASSWORD")),
+                Credentials = new NetworkCredential(emailAddress, emailPassword),
             };
         }
         public async Task SendMail(string toEmailAddress, string emailSubject, string emailMessage) {

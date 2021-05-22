@@ -34,7 +34,10 @@ EMAIL_PASSWORD="Senha do email EMAIL_ADDRESS"
 DESTINATION_EMAIL="Email destino dos alertas"
 SMTP_HOST="Host do SMTP Client"
 SMTP_PORT="Port do SMTP CLient"
+MAX_CONCURRENT_EMAILS="Número de envios simultâneos de email"
 ```
+
+Obs: Para fazer envios de vários emails ao mesmo tempo coloque um SMTP que permita o envio assíncro dos mesmos, caso seu SMTP não permita coloque MAX_CURRENT_EMAILS="1".
 
 Se seu email tiver identificação por dois fatores, use um [app password](https://support.google.com/accounts/answer/185833).
 
