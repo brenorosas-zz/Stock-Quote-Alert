@@ -10,13 +10,14 @@ namespace StockQuoteAlert.Tests {
     public class MonitorTests {
         [Fact]
         public async Task TestToMonitor() {
-            Console.WriteLine("Debug");
+            Environment.SetEnvironmentVariable("EMAIL_ADDRESS", "testmail@test.com");
+            Environment.SetEnvironmentVariable("EMAIL_PASSWORD", "testPassword");
+            Environment.SetEnvironmentVariable("DESTINATION_EMAIL", "testDestinationMail@test.com");
+            Environment.SetEnvironmentVariable("SMTP_HOST", "smtp.testmail.com");
+            Environment.SetEnvironmentVariable("SMTP_PORT", "587");
+            Environment.SetEnvironmentVariable("MAX_CONCURRENT_EMAILS", "2");
             var yahooIntegration = Substitute.For<YahooIntegration>();
-            string host = "hostTest";
-            int port = 32;
-            string emailAddress = "emailAddressTest";
-            string emailPassword = "emailPasswordTest";
-            var emailService = Substitute.For<EmailService>(host, port, emailAddress, emailPassword);
+            var emailService = Substitute.For<EmailService>();
             var result1 = new Tuple<string, decimal>("ok", 100);
             yahooIntegration.GetPrice(Arg.Any<string>()).Returns(result1);
             var tasks = new CommandLineTasks();
@@ -43,14 +44,14 @@ namespace StockQuoteAlert.Tests {
             assetList.Add(asset1);
             assetList.Add(asset2);
             assetList.Add(asset3);
-            await monitor.ToMonitor(tasks, assetList, yahooIntegration, emailService, "testmail@test.com", 2);
+            await monitor.ToMonitor(tasks, assetList, yahooIntegration, emailService);
             foreach (var asset in assetList) {
                 asset.State.Should().BeEquivalentTo(Asset.States.Purchase);
                 asset.State = Asset.States.Normal;
                 asset.SaleReference = 0;
                 asset.PurchaseReference = 1;
             }
-            await monitor.ToMonitor(tasks, assetList, yahooIntegration, emailService, "testmail@test.com", 2);
+            await monitor.ToMonitor(tasks, assetList, yahooIntegration, emailService);
             foreach (var asset in assetList) {
                 asset.State.Should().BeEquivalentTo(Asset.States.Sale);
             }

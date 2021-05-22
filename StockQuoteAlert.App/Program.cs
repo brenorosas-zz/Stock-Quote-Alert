@@ -8,16 +8,10 @@ namespace StockQuoteAlert.App {
         private static async Task StartMonitor(List<Asset> assetList) {
             var tasks = new CommandLineTasks();
             var yahooIntegration = new YahooIntegration();
-            string host = Environment.GetEnvironmentVariable("SMTP_HOST");
-            int port = int.Parse(Environment.GetEnvironmentVariable("SMTP_PORT"));
-            string emailAddress = Environment.GetEnvironmentVariable("EMAIL_ADDRESS");
-            string emailPassword = Environment.GetEnvironmentVariable("EMAIL_PASSWORD");
-            string destinationEmail = Environment.GetEnvironmentVariable("DESTINATION_EMAIL");
-            int maxConcurrentEmails = int.Parse(Environment.GetEnvironmentVariable("MAX_CONCURRENT_EMAILS"));
-            var emailService = new EmailService(host, port, emailAddress, emailPassword);
+            var emailService = new EmailService();
             var monitor = new Monitor();
             while (true) {
-                await monitor.ToMonitor(tasks, assetList, yahooIntegration, emailService, destinationEmail, maxConcurrentEmails);
+                await monitor.ToMonitor(tasks, assetList, yahooIntegration, emailService);
                 await Task.Delay(1000);
             }
         }
