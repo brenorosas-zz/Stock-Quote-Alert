@@ -41,7 +41,7 @@ Obs: Para fazer envios de vários emails ao mesmo tempo coloque um SMTP que perm
 
 Se seu email tiver identificação por dois fatores, use um [app password](https://support.google.com/accounts/answer/185833).
 
-Possivelmente será preciso alterar as permissões no seu gmail para permitir acesso de aplicativos com menor segurança.
+Possivelmente será preciso alterar as permissões no seu email para permitir acesso de aplicativos com menor segurança.
 
 ## Exemplo de uso
 
@@ -51,7 +51,7 @@ Sendo os parâmetros: Ticker ReferênciaVenda ReferênciaCompra
 
 Exemplo:
 
-No diretório Stock-Quote-Alert.
+No diretório Stock-Quote-Alert.App
 
 ```sh
 dotnet run PETR4 22.67 22.59 B3SA3 17.50 17.05
